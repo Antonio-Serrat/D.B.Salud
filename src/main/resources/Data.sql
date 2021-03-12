@@ -1,0 +1,1 @@
+insert into Admin VALUES ( "antonio", "pass")

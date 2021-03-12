@@ -1,4 +1,4 @@
-package com.dataBase;
+package com.AppClinics.dataBase;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-import com.entities.*;
+import com.AppClinics.entities.*;
 
 public class DataBase implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -18,7 +18,7 @@ public class DataBase implements Serializable {
 	Set<Accounts> users = new HashSet<>();
 	Map<Integer, TherapistMenu> menu = new HashMap<>();
 	Set<Therapist> therapist = new HashSet<>();
-	List<Patients> patients = new ArrayList<>();
+	List<Patient> patient = new ArrayList<>();
 	
 	
 	
@@ -93,13 +93,13 @@ public class DataBase implements Serializable {
 		this.users.add(users);
 	}
 
-	public List<Patients> getPatients() {
-		return patients;
+	public List<Patient> getPatients() {
+		return patient;
 	}
 
 
-	public void setPatients(List<Patients> patients) {
-		this.patients = patients;
+	public void setPatients(List<Patient> patient) {
+		this.patient = patient;
 	}
 
 

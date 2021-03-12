@@ -6,8 +6,8 @@ import java.util.Scanner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.dataBase.*;
-import com.entities.*;
+import com.AppClinics.dataBase.*;
+import com.AppClinics.entities.*;
 
 
 @SpringBootApplication
