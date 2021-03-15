@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -30,8 +29,8 @@ public class Therapist implements Serializable {
 
 	@OneToOne
 	private Account account;
-	@ManyToOne
-	private Patient patient;
+	// @ManyToOne
+	// private Patient patient;
 	@OneToMany
 	public List<Turn> turnList;
 	@OneToMany
@@ -127,12 +126,10 @@ public class Therapist implements Serializable {
 		this.agenda = agenda;
 	}
 
-	public Patient getPatient() {
-		return patient;
-	}
-
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
+	/*
+	 * public Patient getPatient() { return patient; }
+	 * 
+	 * public void setPatient(Patient patient) { this.patient = patient; }
+	 */
 
 }
