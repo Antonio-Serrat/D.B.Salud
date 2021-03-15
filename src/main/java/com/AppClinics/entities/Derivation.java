@@ -1,11 +1,12 @@
 package com.AppClinics.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 
@@ -13,20 +14,41 @@ public class Derivation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	public static List<Therapist> therapist;
-	private String obs;
+
+	@OneToOne
+	private Therapist therapist;
+	@OneToOne
+	private Patient patient;
+	private String observation;
 
 	public Derivation() {
-		this.therapist = new ArrayList<>();
+
 	}
 
-	public String getObs() {
-		return obs;
+	public Therapist getTherapist() {
+		return therapist;
 	}
 
-	public void setObs(String obs) {
-		this.obs = obs;
+	public void setTherapist(Therapist therapist) {
+		this.therapist = therapist;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	public String getObservation() {
+		return observation;
+	}
+
+	public void setObservation(String obs) {
+		this.observation = obs;
 	}
 
 }

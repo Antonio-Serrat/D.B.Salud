@@ -1,1 +1,1 @@
-
+INSERT INTO ADMIN (NAME, PASSWORD) VALUES ('root', 'passROOT')

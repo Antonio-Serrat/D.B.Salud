@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,15 +21,17 @@ public class Therapist implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private Account account;
 	private String name;
 	private String specialty;
 	private String email;
 	private String tlf;
 	private String dni;
 	private Agenda agenda;
-	private Patient patient;
 
+	@OneToOne
+	private Account account;
+	@ManyToOne
+	private Patient patient;
 	@OneToMany
 	public List<Turn> turnList;
 	@OneToMany
