@@ -4,14 +4,19 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Patient implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	private String Name;
 	private String Surname;
 	private String Email;
@@ -20,9 +25,16 @@ public class Patient implements Serializable {
 	private Date Birthdate;
 	private int Age;
 
+	@OneToOne
+	Therapist therapist;
+
+	@OneToOne
 	ClinicHistory History;
+	@OneToOne
 	Treatment treatament;
-	Derivations derivations;
+	@OneToOne
+	Derivation derivation;
+	@OneToOne
 	Turn turn;
 
 	public Patient(String Name, String Surname, int Age, int Phone) {

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -14,60 +16,71 @@ import javax.persistence.Table;
 public class Therapist implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String Name;
-	private String Specialty;
+
+	private Account account;
+	private String name;
+	private String specialty;
 	private String email;
 	private String tlf;
-	private String DNI;
+	private String dni;
 	private Agenda agenda;
+	private Patient patient;
 
 	@OneToMany
-	public static List<Turn> turnList;
+	public List<Turn> turnList;
 	@OneToMany
-	public static List<Patient> patientsList;
+	public List<Patient> patientsList;
 
 	public Therapist(String name, String speciality, String email, String dni, String tlf) {
-		this.Name = name;
-		this.Specialty = speciality;
+		this.name = name;
+		this.specialty = speciality;
 		this.email = email;
-		this.DNI = dni;
+		this.dni = dni;
 		this.tlf = tlf;
-		// this.accountsList = new ArrayList<>();
 		this.patientsList = new ArrayList<>();
 		this.turnList = new ArrayList<>();
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		name = name;
 	}
 
 	public String getSpecialty() {
-		return Specialty;
+		return specialty;
 	}
 
 	public void setSpecialty(String specialty) {
-		Specialty = specialty;
+		specialty = specialty;
 	}
 
-	public static List<Patient> getPatientsList() {
+	public List<Patient> getPatientsList() {
 		return patientsList;
 	}
 
-	public static void setPatientsList(Patient patient) {
-		Therapist.patientsList.add(patient);
+	public void setPatientsList(Patient patient) {
+		patientsList.add(patient);
 	}
 
-	public static List<Turn> getTurnList() {
+	public List<Turn> getTurnList() {
 		return turnList;
 	}
 
-	public static void setTurnList(Turn turn) {
-		Therapist.turnList.add(turn);
+	public void setTurnList(Turn turn) {
+		turnList.add(turn);
 	}
 
 	public String getEmail() {
@@ -86,23 +99,36 @@ public class Therapist implements Serializable {
 		this.tlf = tlf;
 	}
 
-	public String getDNI() {
-		return DNI;
+	public String getDni() {
+		return dni;
 	}
 
-	public void setDNI(String dNI) {
-		DNI = dNI;
+	public void setDni(String dni) {
+		dni = dni;
 	}
 
-	// public List<Accounts> getAccountsList() {
-	// return accountsList;
-	// }
+	public Account getAccount() {
+		return account;
+	}
 
-	// public void setAccountList(Accounts accounts) {
-	// this.accountsList.add(accounts);
-	// }
-//	public void newAccount(Accounts account) {
-//		this.accountsList.add(account);
-//	}
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public Agenda getAgenda() {
+		return agenda;
+	}
+
+	public void setAgenda(Agenda agenda) {
+		this.agenda = agenda;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
 
 }

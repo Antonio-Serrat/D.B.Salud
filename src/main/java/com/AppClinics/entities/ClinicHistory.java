@@ -11,8 +11,8 @@ public class ClinicHistory implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Long id;
 
+	private Patient patient;
 	private String formulary;
 	private String Observations;
 

@@ -17,27 +17,47 @@ public class Admin implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String user;
-	private String pass;
+	private Account account;
+
+	private String name;
+	private String password;
 
 	public Admin() {
-
+		name = getName();
+		password = getPassword();
+		this.getAccount();
 	}
 
-	public String getUser() {
-		return user;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUser(String user) {
-		user = user;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getPass() {
-		return pass;
+	public String getName() {
+		return name;
 	}
 
-	public void setPass(String pass) {
-		pass = pass;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String pass) {
+		this.password = pass;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 }

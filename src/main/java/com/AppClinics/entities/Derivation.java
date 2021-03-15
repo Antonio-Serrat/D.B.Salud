@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 
-public class Derivations implements Serializable {
+public class Derivation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -17,7 +17,7 @@ public class Derivations implements Serializable {
 	public static List<Therapist> therapist;
 	private String obs;
 
-	public Derivations() {
+	public Derivation() {
 		this.therapist = new ArrayList<>();
 	}
 
