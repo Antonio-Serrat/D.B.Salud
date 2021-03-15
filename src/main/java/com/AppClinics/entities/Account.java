@@ -25,10 +25,7 @@ public class Account implements Serializable {
 	private Admin admin;
 
 	public Account() {
-		this.admin = new Admin();
-		// this.therapist = therapist;
-		admin.getId();
-		// therapist.getId();
+
 	}
 
 	public Long getId() {
