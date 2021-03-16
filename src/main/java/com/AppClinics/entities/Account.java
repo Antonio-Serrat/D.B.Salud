@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.core.sym.Name;
+//import com.fasterxml.jackson.core.sym.Name;
 
 import lombok.Getter;
 import lombok.Setter;

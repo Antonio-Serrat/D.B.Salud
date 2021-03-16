@@ -43,14 +43,6 @@ public class Admin implements Serializable {
 		this.name = name;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String pass) {
-		this.password = pass;
-	}
-
 	public Account getAccount() {
 		return account;
 	}

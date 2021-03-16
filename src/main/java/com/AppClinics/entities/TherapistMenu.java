@@ -18,4 +18,36 @@ public class TherapistMenu implements Serializable {
 
 	}
 
+	public Date getAgenda() {
+		return Agenda;
+	}
+
+	public void setAgenda(Date agenda) {
+		Agenda = agenda;
+	}
+
+	public List<Patient> getPatient() {
+		return patient;
+	}
+
+	public void setPatient(List<Patient> patient) {
+		this.patient = patient;
+	}
+
+	public List<Turn> getDate() {
+		return Date;
+	}
+
+	public void setDate(List<Turn> date) {
+		Date = date;
+	}
+
+	public List<Turn> getTurn() {
+		return turn;
+	}
+
+	public void setTurn(List<Turn> turn) {
+		this.turn = turn;
+	}
+
 }

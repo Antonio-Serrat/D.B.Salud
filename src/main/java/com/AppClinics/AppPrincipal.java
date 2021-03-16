@@ -1,13 +1,13 @@
 package com.AppClinics;
 
-import java.util.List;
-import java.util.Scanner;
+//import java.util.List;
+//import java.util.Scanner;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.AppClinics.dataBase.*;
-import com.AppClinics.entities.*;
+//import com.AppClinics.dataBase.*;
+//import com.AppClinics.entities.*;
 
 
 @SpringBootApplication

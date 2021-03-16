@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
+//import java.util.Scanner;
 import java.util.Set;
 
 import com.AppClinics.entities.Account;
@@ -21,7 +21,7 @@ public class DataBase implements Serializable {
 	Map<Integer, TherapistMenu> menu = new HashMap<>();
 	Set<Therapist> therapist = new HashSet<>();
 	List<Patient> patient = new ArrayList<>();
-
+/*
 	public void singIn(Scanner sc) {
 		DataBase db = new DataBase();
 
@@ -56,7 +56,7 @@ public class DataBase implements Serializable {
 
 	}
 
-	/*
+
 	 * public void logIn(Scanner sc) {
 	 * 
 	 * if (users.isEmpty()) { System.out.println("No hay cuentas agregadas"); } else
