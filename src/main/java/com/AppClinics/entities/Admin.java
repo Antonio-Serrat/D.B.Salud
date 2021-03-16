@@ -20,13 +20,10 @@ public class Admin implements Serializable {
 
 	@OneToOne
 	private Account account;
-
 	private String name;
-	private String password;
 
 	public Admin() {
-		name = getName();
-		password = getPassword();
+		
 		this.getAccount();
 	}
 

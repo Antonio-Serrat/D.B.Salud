@@ -33,7 +33,7 @@ public class PatientController {
 
 	@PostMapping(value = "/")
 	public ResponseEntity<Patient> savePatients(@PathParam(value = "name") String name,
-			@PathParam(value = "surName") String surname, @PathParam(value = "age") int age,
+			@PathParam(value = "surname") String surname, @PathParam(value = "age") int age,
 			@PathParam(value = "phone") int phone) {
 
 		// Wrapper wrapper = new Wrapper();

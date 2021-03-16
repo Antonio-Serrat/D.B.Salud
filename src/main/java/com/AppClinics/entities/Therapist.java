@@ -36,6 +36,9 @@ public class Therapist implements Serializable {
 	@OneToMany
 	public List<Patient> patientsList;
 
+	public Therapist(){
+		
+	}
 	public Therapist(String name, String speciality, String email, String dni, String tlf) {
 		this.name = name;
 		this.specialty = speciality;
@@ -59,7 +62,7 @@ public class Therapist implements Serializable {
 	}
 
 	public void setName(String name) {
-		name = name;
+		this.name = name;
 	}
 
 	public String getSpecialty() {
@@ -67,7 +70,7 @@ public class Therapist implements Serializable {
 	}
 
 	public void setSpecialty(String specialty) {
-		specialty = specialty;
+		this.specialty = specialty;
 	}
 
 	public List<Patient> getPatientsList() {
@@ -107,7 +110,7 @@ public class Therapist implements Serializable {
 	}
 
 	public void setDni(String dni) {
-		dni = dni;
+		this.dni = dni;
 	}
 
 	public Account getAccount() {
