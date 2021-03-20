@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 
 public class Agenda implements Serializable {
@@ -16,29 +21,17 @@ public class Agenda implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@OneToOne
 	private Therapist therapist;
-	private Calendar Calendar;
+	private Calendar calendar;
 	@OneToOne
 	private Turn turn;
 
-	public Agenda() {
-
-	}
-
-	public Therapist getTherapist() {
-		return therapist;
-	}
-
-	public void setTherapist(Therapist therapist) {
-		this.therapist = therapist;
-	}
-
-	public Calendar getCalendar() {
-		return Calendar;
-	}
-
-	public void setCalendar(Calendar calendar) {
-		Calendar = calendar;
+	public Agenda(Calendar calendar, Turn turn, Therapist therapist) {
+		this.getCalendar();
+		this.getTherapist();
+		this.getTurn();
 	}
 
 }

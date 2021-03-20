@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 
 public class Treatment implements Serializable {
@@ -20,45 +25,18 @@ public class Treatment implements Serializable {
 
 	@OneToOne
 	private Patient patient;
-	private Date Date;
-	private String Prescription;
-	private String Evolution;
-	private String Observations;
+	private Date date;
+	private String prescription;
+	private String evolution;
+	private String observations;
 
-	public Treatment() {
+	public Treatment(Patient patient, String prescription, String evolution, String observations, Date date) {
+		this.date = date;
+		this.patient = patient;
+		this.prescription = prescription;
+		this.evolution = evolution;
+		this.observations = observations;
 
-	}
-
-	public Date getDate() {
-		return Date;
-	}
-
-	public void setDate(Date date) {
-		Date = date;
-	}
-
-	public String getPrescription() {
-		return Prescription;
-	}
-
-	public void setPrescription(String prescription) {
-		Prescription = prescription;
-	}
-
-	public String getEvolution() {
-		return Evolution;
-	}
-
-	public void setEvolution(String evolution) {
-		Evolution = evolution;
-	}
-
-	public String getObservations() {
-		return Observations;
-	}
-
-	public void setObservations(String observations) {
-		Observations = observations;
 	}
 
 }

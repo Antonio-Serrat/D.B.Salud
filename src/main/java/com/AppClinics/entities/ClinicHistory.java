@@ -8,6 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 
 public class ClinicHistory implements Serializable {
@@ -19,34 +24,13 @@ public class ClinicHistory implements Serializable {
 	@OneToOne
 	private Patient patient;
 	private String formulary;
-	private String Observations;
+	private String observations;
 
-	public ClinicHistory() {
+	public ClinicHistory(Patient patient, String formulary, String obs) {
 
-	}
-
-	public Patient getPatient() {
-		return patient;
-	}
-
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
-
-	public String getFormulary() {
-		return formulary;
-	}
-
-	public void setFormulary(String formulary) {
 		this.formulary = formulary;
-	}
-
-	public String getObservations() {
-		return Observations;
-	}
-
-	public void setObservations(String observations) {
-		Observations = observations;
+		this.patient = patient;
+		this.observations = obs;
 	}
 
 }

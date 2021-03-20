@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 
 public class Turn implements Serializable {
@@ -21,19 +26,14 @@ public class Turn implements Serializable {
 	@OneToOne
 	private Patient patient;
 	@OneToOne
-	private Therapist therapist;
+	private Agenda agenda;
 	private Instant fecha;
 
-	public Turn() {
-
-	}
-
-	public Instant getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Instant fecha) {
+	public Turn(Patient patient, Instant fecha, Agenda agenda) {
+		this.patient = patient;
 		this.fecha = fecha;
+		this.agenda = agenda;
+
 	}
 
 }

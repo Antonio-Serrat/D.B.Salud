@@ -26,75 +26,32 @@ public class Account implements Serializable {
 	private Long id;
 
 	@OneToOne
-	private Therapist Therapist;
+	private Therapist therapist;
 	@OneToOne
-	private Admin Admin;
-	private String Name;
-	private String Password; 
-	private Boolean ADMIN = true;
-	
-	public Account(String Name, String Password) {
-		if (ADMIN != false) {
-			Account acA = new Account(Name, Password);
-			Admin = new Admin();
-			Admin.setName(Name);
-			Admin.setAccount(acA);
-		}else{
-			Account acT = new Account(Name, Password);
+	private Admin admin;
+	private String name;
+	private String password;
 
-			Therapist = new Therapist();
-			Therapist.setAccount(acT);
-		}
+	public Account(String name, String password) {
+		this.password = password;
+		this.name = name;
 	}
 
-
-
-	public boolean isADMIN() {
-		return ADMIN;
+	public Account(String name, String password, Therapist therapist) {
+		this(name, password);
+		this.therapist = therapist;
 	}
 
-	public void setADMIN(boolean aDMIN) {
-		this.ADMIN = aDMIN;
+	public Account(String name, String password, Admin admin) {
+		this(name, password);
+		this.admin = admin;
 	}
 
-	public String getPassword() {
-		return Password;
+	public boolean isTHerapist() {
+		return therapist != null;
 	}
 
-	public void setPassword(String Password) {
-		this.Password = Password;
+	public boolean isAdmin() {
+		return admin != null;
 	}
-
-	public String getName() {
-		return Name;
-	}
-
-	public void setName(String Name) {
-		this.Name = Name;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Therapist getTherapist() {
-		return Therapist;
-	}
-
-	public void setTherapist(Therapist Therapist) {
-		this.Therapist = Therapist;
-	}
-
-	public Admin getAdmin() {
-		return Admin;
-	}
-
-	public void setAdmin(Admin Admin) {
-		this.Admin = Admin;
-	}
-
 }
