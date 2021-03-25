@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-//import com.fasterxml.jackson.core.sym.Name;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,19 +16,22 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "Accounts")
+
 public class Account implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Long id;
+
+	private String password;
+	private String name;
 
 	@OneToOne
 	private Therapist therapist;
 	@OneToOne
 	private Admin admin;
-	private String name;
-	private String password;
 
 	public Account(String name, String password) {
 		this.password = password;

@@ -26,6 +26,7 @@ public class Therapist implements Serializable {
 	private Long id;
 
 	private String name;
+	private String surname;
 	private String specialty;
 	private String email;
 	private int tlf;
@@ -35,12 +36,14 @@ public class Therapist implements Serializable {
 	private Agenda agenda;
 	@OneToOne
 	private Account account;
-	// @ManyToOne
-	// private Patient patient;
 	@OneToMany
-	public List<Turn> turnList;
+	public List<Turn> turnList = new ArrayList<>();
 	@OneToMany
-	public List<Patient> patientsList;
+	public List<Patient> patientsList = new ArrayList<>();
+
+	public Therapist() {
+
+	}
 
 	public Therapist(Account account) {
 		this.getAccount();
@@ -53,8 +56,7 @@ public class Therapist implements Serializable {
 		this.dni = dni;
 		this.tlf = tlf;
 		this.agenda = agenda;
-		this.patientsList = new ArrayList<>();
-		this.turnList = new ArrayList<>();
+
 	}
 
 	public List<Patient> getPatientsList() {

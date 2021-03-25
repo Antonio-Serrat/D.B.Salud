@@ -17,7 +17,7 @@ import com.AppClinics.entities.Patient;
 import com.AppClinics.repositories.PatientRepository;
 
 @RestController
-@RequestMapping("/api/patients")
+@RequestMapping(value = "/api/patients")
 public class PatientController {
 
 	PatientRepository repo;

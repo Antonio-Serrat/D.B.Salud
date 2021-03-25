@@ -24,6 +24,10 @@ public class AppPrincipal {
 		Admin root = new Admin(name, aca);
 
 		root.setId((long) 1111);
+		root.setAccount(aca);
 		aca.setAdmin(root);
+		aca.setName(name);
+		aca.setPassword(pass);
+
 	}
 }

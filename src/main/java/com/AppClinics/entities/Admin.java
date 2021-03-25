@@ -14,6 +14,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
 @Entity
 @Table(name = "Admin")
 public class Admin implements Serializable {

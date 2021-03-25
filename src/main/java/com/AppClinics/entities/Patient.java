@@ -42,6 +42,10 @@ public class Patient implements Serializable {
 	@OneToOne
 	Turn turn;
 
+	public Patient() {
+
+	}
+
 	public Patient(String name, String surname, int age, int phone, String email, String direction, Date birthdate) {
 		this.name = name;
 		this.surname = surname;
