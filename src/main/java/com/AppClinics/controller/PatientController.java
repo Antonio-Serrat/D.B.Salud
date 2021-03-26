@@ -33,10 +33,6 @@ public class PatientController {
 		return new ResponseEntity<List<Patient>>((List<Patient>) repo.findAll(), HttpStatus.OK);
 	}
 
-	// public Class Wrapper() {
-
-	// }
-
 	@PostMapping(value = "/")
 	public ResponseEntity<Patient> savePatients(@PathParam(value = "name") String name,
 			@PathParam(value = "surname") String surname, @PathParam(value = "age") int age,
@@ -52,7 +48,7 @@ public class PatientController {
 		patient.setPhone(phone);
 		patient.setDirection(direction);
 		patient.setEmail(email);
-		patient.setBirthdate(null);
+		patient.setBirthdate(birthdate);
 
 		repo.save(patient);
 
@@ -60,4 +56,7 @@ public class PatientController {
 
 	}
 
+	public void Wrapper() {
+
+	}
 }

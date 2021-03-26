@@ -29,8 +29,8 @@ public class Therapist implements Serializable {
 	private String surname;
 	private String specialty;
 	private String email;
-	private int tlf;
-	private int dni;
+	private Long tlf;
+	private Long dni;
 
 	@OneToOne
 	private Agenda agenda;
@@ -45,17 +45,17 @@ public class Therapist implements Serializable {
 
 	}
 
-	public Therapist(Account account) {
+	public Therapist(Account account, Agenda agenda) {
 		this.getAccount();
+		this.getAgenda();
 	}
 
-	public Therapist(String name, String speciality, String email, int dni, int tlf, Agenda agenda) {
+	public Therapist(String name, String surname, String speciality, String email, Long dni, Long tlf) {
 		this.name = name;
 		this.specialty = speciality;
 		this.email = email;
 		this.dni = dni;
 		this.tlf = tlf;
-		this.agenda = agenda;
 
 	}
 

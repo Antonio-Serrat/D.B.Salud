@@ -16,7 +16,7 @@ import com.AppClinics.entities.Therapist;
 import com.AppClinics.repositories.TherapistRepository;
 
 @RestController
-@RequestMapping(value = "/api/therapists")
+@RequestMapping(value = "/api/therapist")
 public class TherapistController {
 
 	TherapistRepository repo;
@@ -34,18 +34,16 @@ public class TherapistController {
 	@PostMapping(value = "/")
 	public ResponseEntity<Therapist> saveTherapist(@PathParam(value = "name") String name,
 			@PathParam(value = "surname") String surname, @PathParam(value = "specialty") String specialty,
-			@PathParam(value = "tlf") int tlf, @PathParam(value = "email") String email,
-			@PathParam(value = "dni") int dni) {
+			@PathParam(value = "tlf") Long tlf, @PathParam(value = "email") String email,
+			@PathParam(value = "dni") Long dni) {
 
-		// Wrapper wrapper = new Wrapper();
-
-		Therapist therapist = new Therapist();
+		Therapist therapist = new Therapist(name, surname, specialty, email, dni, tlf);
 		therapist.setName(name);
 		therapist.setSurname(surname);
-		therapist.setDni(dni);
-		therapist.setTlf(tlf);
 		therapist.setSpecialty(specialty);
 		therapist.setEmail(email);
+		therapist.setDni(dni);
+		therapist.setTlf(tlf);
 
 		repo.save(therapist);
 
