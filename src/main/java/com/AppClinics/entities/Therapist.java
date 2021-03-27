@@ -12,6 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +22,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "Therapists")
+
 public class Therapist implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -33,8 +37,10 @@ public class Therapist implements Serializable {
 	private Long dni;
 
 	@OneToOne
+	@Cascade(CascadeType.ALL)
 	private Agenda agenda;
 	@OneToOne
+	@Cascade(CascadeType.ALL)
 	private Account account;
 	@OneToMany
 	public List<Turn> turnList = new ArrayList<>();
@@ -45,18 +51,21 @@ public class Therapist implements Serializable {
 
 	}
 
-	public Therapist(Account account, Agenda agenda) {
-		this.getAccount();
-		this.getAgenda();
+	public Therapist(Account account) {
+
 	}
 
-	public Therapist(String name, String surname, String speciality, String email, Long dni, Long tlf) {
+	public Therapist(Turn turn) {
+		this.getTurnList();
+	}
+
+	public Therapist(String name, String surname, String speciality, String email, Long dni, Long tlf, Agenda agenda) {
 		this.name = name;
 		this.specialty = speciality;
 		this.email = email;
 		this.dni = dni;
 		this.tlf = tlf;
-
+		this.agenda = agenda;
 	}
 
 	public List<Patient> getPatientsList() {

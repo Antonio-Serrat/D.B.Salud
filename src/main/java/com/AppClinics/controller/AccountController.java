@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AppClinics.entities.Account;
-import com.AppClinics.entities.Therapist;
 import com.AppClinics.repositories.AccountRepository;
 
 @RestController
@@ -32,12 +31,11 @@ public class AccountController {
 
 	@PostMapping(value = "/")
 	public ResponseEntity<Account> saveAccount(@PathParam(value = "name") String name,
-			@PathParam(value = "password") String password, @PathParam(value = "therapist") Therapist therapist) {
+			@PathParam(value = "password") String password) {
 
-		Account account = new Account(name, password, therapist);
+		Account account = new Account();
 		account.setName(name);
 		account.setPassword(password);
-		account.setTherapist(therapist);
 
 		repo.save(account);
 

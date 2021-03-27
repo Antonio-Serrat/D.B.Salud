@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AppClinics.entities.Therapist;
@@ -37,17 +39,23 @@ public class TherapistController {
 			@PathParam(value = "tlf") Long tlf, @PathParam(value = "email") String email,
 			@PathParam(value = "dni") Long dni) {
 
-		Therapist therapist = new Therapist(name, surname, specialty, email, dni, tlf);
+		Therapist therapist = new Therapist();
 		therapist.setName(name);
 		therapist.setSurname(surname);
 		therapist.setSpecialty(specialty);
+		therapist.setTlf(tlf);
 		therapist.setEmail(email);
 		therapist.setDni(dni);
-		therapist.setTlf(tlf);
 
 		repo.save(therapist);
 
 		return new ResponseEntity<Therapist>(therapist, HttpStatus.CREATED);
+	}
 
+	@ResponseBody
+	public ResponseEntity<Therapist> saveTurn(@PathVariable(value = "TherapistId") Long TherapistId,
+			@PathVariable(value = "PatientId") Long patientId) {
+
+		return null;
 	}
 }

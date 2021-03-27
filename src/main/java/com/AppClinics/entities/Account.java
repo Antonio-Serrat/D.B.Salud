@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,20 +25,24 @@ public class Account implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private Long id;
 
-	private String password;
 	private String name;
+	private String password;
 
 	@OneToOne
+	@Cascade(CascadeType.ALL)
 	private Therapist therapist;
 	@OneToOne
 	private Admin admin;
 
+	public Account() {
+
+	}
+
 	public Account(String name, String password) {
-		this.password = password;
 		this.name = name;
+		this.password = password;
 	}
 
 	public Account(String name, String password, Therapist therapist) {
@@ -49,10 +56,10 @@ public class Account implements Serializable {
 	}
 
 	public boolean isTHerapist() {
-		return therapist != null;
+		return therapist.getId() != null;
 	}
 
 	public boolean isAdmin() {
-		return admin != null;
+		return admin.getName() != null;
 	}
 }
