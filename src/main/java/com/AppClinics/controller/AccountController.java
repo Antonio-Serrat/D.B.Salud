@@ -44,6 +44,14 @@ public class AccountController {
 
 	}
 
+	@DeleteMapping(value = "/dellOFFall")
+	public ResponseEntity<List<Account>> deleteAll(@PathParam(value = "id") Long id) {
+
+		repo.deleteAll();
+
+		return new ResponseEntity<List<Account>>(HttpStatus.OK);
+	}
+
 	@DeleteMapping(value = "/")
 	public ResponseEntity<List<Account>> deleteAccount(@PathParam(value = "id") Long id) {
 
