@@ -32,6 +32,7 @@ public class Admin implements Serializable {
 	public Admin(String name, Account account) {
 		this.name = name;
 		this.account = account;
+
 	}
 
 }

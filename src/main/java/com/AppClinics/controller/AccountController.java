@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.websocket.server.PathParam;
 
+import org.springframework.expression.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,33 +32,26 @@ public class AccountController {
 		return new ResponseEntity<List<Account>>((List<Account>) repo.findAll(), HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/")
-	public ResponseEntity<Account> saveAccount(@PathParam(value = "name") String name,
-			@PathParam(value = "password") String password) {
-
+	@PostMapping(value = "/singup")
+	public String saveAccount(@PathParam(value = "name") String name, @PathParam(value = "password") String password,
+			Model model) throws ParseException {
 		Account account = new Account();
 		account.setName(name);
 		account.setPassword(password);
-
+		model.addAttribute(name, password);
 		repo.save(account);
 
-		return new ResponseEntity<Account>(account, HttpStatus.CREATED);
+		return "redirect:/home";
 
 	}
 
-	@DeleteMapping(value = "/dellOFFall")
-	public ResponseEntity<List<Account>> deleteAll(@PathParam(value = "id") Long id) {
+	@DeleteMapping(value = "/delall")
+	public ResponseEntity<List<Account>> deleteAll() {
 
 		repo.deleteAll();
 
 		return new ResponseEntity<List<Account>>(HttpStatus.OK);
+
 	}
 
-	@DeleteMapping(value = "/")
-	public ResponseEntity<List<Account>> deleteAccount(@PathParam(value = "id") Long id) {
-
-		repo.deleteById(id);
-
-		return new ResponseEntity<List<Account>>(HttpStatus.OK);
-	}
 }

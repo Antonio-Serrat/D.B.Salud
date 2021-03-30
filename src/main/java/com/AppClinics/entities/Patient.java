@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
@@ -25,6 +27,7 @@ public class Patient implements Serializable {
 	private String email;
 	private int phone;
 	private String direction;
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date birthdate;
 	private int age;
 
