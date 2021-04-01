@@ -10,15 +10,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/")
 public class AppPrincipalController {
 
-	@GetMapping(value = "/home")
-	public String home() {
-		return "home";
+	@GetMapping(value = "/")
+	public String Welcome() {
+		return "index";
 	}
 
 	@GetMapping(value = "/signup")
-	public String saveAccount(Model model) throws ParseException {
+	public String signup(Model model) throws ParseException {
 
 		return "signup";
+
+	}
+
+	@GetMapping(value = "/about")
+	public String about(Model model) throws ParseException {
+
+		return "about";
 
 	}
 
