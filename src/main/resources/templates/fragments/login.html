@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-<meta charset="UTF-8">
-<title></title>
-</head>
-<body>
 <div th:fragment="login"> 
 <form class="px-3 py-3">
 	   		<div class="form-group mx-sm-3 mb-2">
@@ -23,10 +11,7 @@
 		  	</div>
 			  <button type="submit" class="btn btn-primary mx-sm-3 mb-2">Confirm identity</button>
 		  <div class="dropdown-divider"></div>
-		  	<a class="dropdown-item" href="/singup">New around here? Sign up</a>
-		  	<a class="dropdown-item" href="#">Forgot password?</a>
+		  	<a class="nav-link" th:href="@{/signup}">New around here? Sign up</a>
+		  	<a class="nav-link" href="#">Forgot password?</a>
 </form>
-</div>
-</body>
-</html>
 

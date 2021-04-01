@@ -39,9 +39,7 @@ public class PatientController {
 			@PathParam(value = "phone") int phone, @PathParam(value = "direction") String direction,
 			@PathParam(value = "email") String email, @PathParam(value = "birthdate") Date birthdate) {
 
-		// Wrapper wrapper = new Wrapper();
-
-		Patient patient = new Patient(name, surname, phone, age, direction, email, birthdate);
+		Patient patient = new Patient();
 		patient.setName(name);
 		patient.setSurname(surname);
 		patient.setAge(age);

@@ -4,20 +4,17 @@ import java.util.List;
 
 import javax.websocket.server.PathParam;
 
-import org.springframework.expression.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.AppClinics.entities.Account;
 import com.AppClinics.repositories.AccountRepository;
 
-@RestController
+@Controller
 @RequestMapping(value = "/api/accounts")
 public class AccountController {
 
@@ -32,17 +29,10 @@ public class AccountController {
 		return new ResponseEntity<List<Account>>((List<Account>) repo.findAll(), HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/singup")
-	public String saveAccount(@PathParam(value = "name") String name, @PathParam(value = "password") String password,
-			Model model) throws ParseException {
-		Account account = new Account();
-		account.setName(name);
-		account.setPassword(password);
-		model.addAttribute(name, password);
-		repo.save(account);
+	@GetMapping(value = "/Me{Therapist_id}")
+	public String home(@PathParam(value = "id") Long id) {
 
-		return "redirect:/home";
-
+		return "home";
 	}
 
 	@DeleteMapping(value = "/delall")

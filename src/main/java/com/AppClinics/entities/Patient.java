@@ -12,8 +12,10 @@ import javax.persistence.OneToOne;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @Entity
 public class Patient implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -42,10 +44,6 @@ public class Patient implements Serializable {
 	Derivation derivation;
 	@OneToOne
 	Turn turn;
-
-	public Patient() {
-
-	}
 
 	public Patient(String name, String surname, int age, int phone, String email, String direction, Date birthdate) {
 		this.name = name;
