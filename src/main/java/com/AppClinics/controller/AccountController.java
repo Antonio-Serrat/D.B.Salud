@@ -22,7 +22,7 @@ public class AccountController {
 		return "homeTh";
 	}
 
-	@GetMapping(value = "/me")
+	@GetMapping(value = "/therapist")
 	public String me() {
 
 		return "me";

@@ -9,9 +9,9 @@
 			    <label for="inputPassword2" class="sr-only">Password</label>
 			    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
 		  	</div>
-			  <button type="submit" class="btn btn-primary mx-sm-3 mb-2">Confirm identity</button>
+			  <button event="on-click" type="submit" class="btn btn-primary mx-sm-3 mb-2">Confirm identity</button>
 		  <div class="dropdown-divider"></div>
 		  	<a class="nav-link" th:href="@{/signup}">New around here? Sign up</a>
-		  	<a class="nav-link" href="#">Forgot password?</a>
+		  	<a class="nav-link" th:href="@{/api/accounts/homeTh}">Account Menu</a>
 </form>
 

@@ -27,11 +27,11 @@ public class Patient implements Serializable {
 	private String name;
 	private String surname;
 	private String email;
-	private int phone;
+	private Integer phone;
 	private String direction;
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date birthdate;
-	private int age;
+	private Integer age;
 
 	@OneToOne
 	Therapist therapist;
@@ -45,7 +45,8 @@ public class Patient implements Serializable {
 	@OneToOne
 	Turn turn;
 
-	public Patient(String name, String surname, int age, int phone, String email, String direction, Date birthdate) {
+	public Patient(String name, String surname, Integer age, Integer phone, String email, String direction,
+			Date birthdate) {
 		this.name = name;
 		this.surname = surname;
 		this.age = age;

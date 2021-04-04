@@ -3,14 +3,25 @@
 <head>
 <meta charset="UTF-8" >
 <title>D.B.S</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 </head>
 <body>
+<header th:insert="fragments/header.html :: 'header'"></header>
 	<div class="container">
 		<div id="title">
-			<h1>Data BAse Salud</h1>
+			<h1>Data Base Salud</h1>
 		</div>
+		<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+  		<div class="card-header">Data Base Salud</div>
+  		<div class="card-body">
+    		<h5 class="card-title">About us</h5>
+   			 <p class="card-text">lLorem, ipsum dolor sit amet consectetur adipisicing elit. Ab earum hic velit porro deleniti amet, ex ea commodi quam vel aut doloribus vero libero mollitia architecto voluptatibus et dolore laudantium!</p>
+  		</div>
 		<div id="about">
-			<p id="tetx">lLorem, ipsum dolor sit amet consectetur adipisicing elit. Ab earum hic velit porro deleniti amet, ex ea commodi quam vel aut doloribus vero libero mollitia architecto voluptatibus et dolore laudantium!</p>
+			<p id="tetx"></p>
 		</div>
 	</div>
 </body>

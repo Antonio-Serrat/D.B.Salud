@@ -54,7 +54,4 @@ public class PatientRest {
 
 	}
 
-	public void Wrapper() {
-
-	}
 }
