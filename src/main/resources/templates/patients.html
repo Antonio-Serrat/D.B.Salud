@@ -13,11 +13,11 @@
 	
 	<div class="container">
 		<h3>Patients</h3>
-		<div  class="alert alert-primary" role="alert">
+		<div th:if="${patients.isEmpty()}" class="alert alert-primary" role="alert">
 		  No hay pacientes agregados.
 		</div>
 		<span >
-			<table class="table table-hover">
+			<table th:if="!${patients.isEmpty()}" class="table table-hover">
 			  <thead>
 			    <tr>
 			      <th scope="col">#</th>
@@ -35,7 +35,7 @@
 	  			    <td th:text="${patient.name}" />
 				    <td th:text="${patient.turn}" />
 				    <td><form th:action="@{|/patients/?id=${patient.id}|}" method="post"><button type="submit" class="btn btn-warning">Editar</button></form></td>
-				    <form th:action="@{|/conf-borrar/?id=${patient.id}|}" method="post"><button type="submit" class="btn btn-danger">Borrar</button></form></td>
+				    <td><form th:action="@{|/conf-borrar/?id=${patient.id}|}" method="post"><button type="submit" class="btn btn-danger">Borrar</button></form></td>
 	   			    
 				</tr>
 			  </tbody>

@@ -28,8 +28,13 @@ public class TherapistController {
 	AgendaRepository repoAgenda;
 
 	@Autowired
-	public TherapistController(TherapistRepository repo) {
+	public TherapistController(TherapistRepository repo, PatientRepository repoPatient, TurnRepository repoTurn,
+			AgendaRepository repoAgenda) {
 		this.repo = repo;
+		this.repoPatient = repoPatient;
+		this.repoTurn = repoTurn;
+		this.repoAgenda = repoAgenda;
+
 	}
 
 	@GetMapping(value = "/newPatients")
@@ -59,7 +64,7 @@ public class TherapistController {
 		return "patients";
 	}
 
-	@GetMapping(value = "/patients")
+	@RequestMapping(value = "/patients")
 	public String patientsList(Model model) {
 		model.addAttribute("patients", repoPatient.findAll());
 		return "patients";
