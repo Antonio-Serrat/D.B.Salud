@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AppClinics.entities.Patient;
@@ -54,4 +55,11 @@ public class PatientRest {
 
 	}
 
+	@RequestMapping(method = RequestMethod.DELETE, value = "/delAll")
+	public ResponseEntity<List<Patient>> deleteAll() {
+
+		repo.deleteAll();
+		return new ResponseEntity<List<Patient>>(HttpStatus.ACCEPTED);
+
+	}
 }

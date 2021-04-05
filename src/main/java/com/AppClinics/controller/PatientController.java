@@ -26,4 +26,5 @@ public class PatientController {
 		return "patients";
 
 	}
+
 }

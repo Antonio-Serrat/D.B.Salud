@@ -9,11 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 
 public class ClinicHistory implements Serializable {
 	private static final long serialVersionUID = 1L;

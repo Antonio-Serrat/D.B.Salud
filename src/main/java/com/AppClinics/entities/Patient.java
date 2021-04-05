@@ -32,10 +32,9 @@ public class Patient implements Serializable {
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date birthdate;
 	private Integer age;
-
-	@OneToOne
-	Therapist therapist;
-
+	/*
+	 * @OneToOne Therapist therapist;
+	 */
 	@OneToOne
 	ClinicHistory history;
 	@OneToOne
@@ -56,7 +55,7 @@ public class Patient implements Serializable {
 		this.email = email;
 
 		this.getHistory();
-		this.getTherapist();
+		// this.getTherapist();
 		this.getDerivation();
 		this.getTreatament();
 		this.getTurn();

@@ -1,15 +1,17 @@
 package com.AppClinics.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.AppClinics.entities.ClinicHistory;
 import com.AppClinics.entities.Patient;
@@ -37,36 +39,52 @@ public class TherapistController {
 
 	}
 
-	@GetMapping(value = "/newPatients")
-	public String newPatient() {
+	@RequestMapping(value = "/formularyPatient")
+	public String formulary(Model model) {
+		Patient patient = new Patient();
+		patient.setBirthdate(new Date());
+		model.addAttribute("patient", patient);
 
-		return "newPatient";
+		return "formularyPatient";
 	}
 
-	@PostMapping(value = "/addPatient")
-	public String savePatient(@PathParam(value = "name") String name, @PathParam(value = "surname") String surname,
-			@PathParam(value = "age") Integer age, @PathParam(value = "phone") Integer phone,
-			@PathParam(value = "email") String email, @PathParam(value = "birthdate") Date birthdate,
-			@PathParam(value = "Clinic History") ClinicHistory history, Model model) {
+	@RequestMapping(value = "/newPatient", method = { RequestMethod.POST, RequestMethod.PUT })
+	public String savePatient(@RequestParam(value = "name") String name,
+			@RequestParam(value = "surname") String surname, @RequestParam(value = "age") Integer age,
+			@RequestParam(value = "phone") Integer phone, @RequestParam(value = "email") String email,
+			@RequestParam(value = "birthdate") String birthdate,
+			@RequestParam(value = "Clinic History") ClinicHistory history, Model model) throws ParseException {
+
+		Date fecha = new SimpleDateFormat().parse(birthdate);
 
 		Patient patient = new Patient();
 		patient.setName(name);
 		patient.setSurname(surname);
 		patient.setAge(age);
-		patient.setBirthdate(birthdate);
 		patient.setEmail(email);
+		patient.setBirthdate(fecha);
 		patient.setPhone(phone);
 		patient.setHistory(history);
 
-		model.addAttribute(patient);
+		model.addAttribute("patient", patient);
 		repoPatient.save(patient);
 
-		return "patients";
+		return "redirect:/patients";
 	}
 
-	@RequestMapping(value = "/patients")
+	@RequestMapping(value = "/patients", method = RequestMethod.GET)
 	public String patientsList(Model model) {
 		model.addAttribute("patients", repoPatient.findAll());
 		return "patients";
 	}
+
+	@PostMapping(value = "/delete/{id}")
+	public String delete(@PathVariable(value = "id") Long id) {
+
+		repoPatient.deleteById(id);
+
+		return "patients";
+
+	}
+
 }

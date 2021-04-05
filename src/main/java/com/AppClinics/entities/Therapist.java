@@ -37,20 +37,23 @@ public class Therapist implements Serializable {
 	@OneToOne
 	@Cascade(CascadeType.ALL)
 	private Agenda agenda;
-	@OneToOne
-	@Cascade(CascadeType.ALL)
-	private Account account;
+	/*
+	 * @OneToOne
+	 * 
+	 * @Cascade(CascadeType.ALL) private Account account;
+	 */
 	@OneToMany
 	public List<Turn> turns;
-	@OneToMany
-	public List<Patient> patients;
 
+	/*
+	 * @OneToMany public List<Patient> patients;
+	 */
 	public Therapist() {
 
 	}
 
 	public Therapist(List<Patient> patients, List<Turn> turns) {
-		this.patients = new ArrayList<>();
+		// this.patients = new ArrayList<>();
 		this.turns = new ArrayList<>();
 	}
 
@@ -67,14 +70,11 @@ public class Therapist implements Serializable {
 		this.agenda = agenda;
 	}
 
-	public List<Patient> getPatients() {
-		return patients;
-	}
-
-	public void setPatients(Patient patient) {
-		patients.add(patient);
-	}
-
+	/*
+	 * public List<Patient> getPatients() { return patients; }
+	 * 
+	 * public void setPatients(Patient patient) { patients.add(patient); }
+	 */
 	public List<Turn> getTurn() {
 		return turns;
 	}

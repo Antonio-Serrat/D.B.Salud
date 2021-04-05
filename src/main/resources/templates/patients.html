@@ -23,19 +23,19 @@
 			      <th scope="col">#</th>
 			      <th scope="col">Apellido</th>
 			      <th scope="col">Nombre</th>
-			      <th scope="col">Turnos</th>
+			      <th scope="col">direccion</th>
 			      <th scope="col sm-x"></th>
 			      <th scope="col sm-x"></th>
 			    </tr>
 			  </thead>
 			  <tbody>
 				<tr th:each="patient, iter : ${patients}">
-			      	<th scope="row" th:text="${iter.index + 1}" />
+			      	<th scope="row" th:text="${patient.id}" />
 				    <td th:text="${patient.surname}" />
 	  			    <td th:text="${patient.name}" />
-				    <td th:text="${patient.turn}" />
+				    <td th:text="${patient.direction}" />
 				    <td><form th:action="@{|/patients/?id=${patient.id}|}" method="post"><button type="submit" class="btn btn-warning">Editar</button></form></td>
-				    <td><form th:action="@{|/conf-borrar/?id=${patient.id}|}" method="post"><button type="submit" class="btn btn-danger">Borrar</button></form></td>
+				    <td><form th:action="@{|/api/therapist/delete/${patient.id}|}" method="post"><button type="submit" class="btn btn-danger">Borrar</button></form></td>
 	   			    
 				</tr>
 			  </tbody>
