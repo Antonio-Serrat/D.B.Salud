@@ -40,13 +40,13 @@ public class Account implements Serializable {
 		this.password = password;
 	}
 
-	public Account(String name, String password, Therapist therapist) {
-		this(name, password);
+	public Account(String email, String password, Therapist therapist) {
+		this(email, password);
 		// this.therapist = therapist;
 	}
 
-	public Account(String name, String password, Admin admin) {
-		this(name, password);
+	public Account(String email, String password, Admin admin) {
+		this(email, password);
 		this.admin = admin;
 	}
 

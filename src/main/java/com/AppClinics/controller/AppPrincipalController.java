@@ -50,8 +50,8 @@ public class AppPrincipalController {
 	public String newAccount(@ModelAttribute Account account, @RequestParam(name = "email") String email,
 			@RequestParam(name = "password") String password, Model model) {
 
-		account.setEmail(null);
-		account.setPassword(null);
+		account.setEmail(email);
+		account.setPassword(password);
 		repoAccount.save(account);
 		model.addAttribute("account", account);
 
