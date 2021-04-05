@@ -24,11 +24,10 @@ public class Account implements Serializable {
 
 	private String name;
 	private String password;
-	/*
-	 * @OneToOne
-	 * 
-	 * @Cascade(CascadeType.ALL) private Therapist therapist;
-	 */
+
+	@OneToOne
+	private Therapist therapist;
+
 	@OneToOne
 	private Admin admin;
 
@@ -51,9 +50,10 @@ public class Account implements Serializable {
 		this.admin = admin;
 	}
 
-	/*
-	 * public boolean isTHerapist() { return therapist.getId() != null; }
-	 */
+	public boolean isTHerapist() {
+		return therapist.getId() != null;
+	}
+
 	public boolean isAdmin() {
 		return admin.getName() != null;
 	}
