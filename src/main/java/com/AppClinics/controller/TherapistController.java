@@ -66,7 +66,6 @@ public class TherapistController {
 		patient.setBirthdate(fecha);
 		patient.setPhone(phone);
 		patient.setHistory(history);
-
 		model.addAttribute("patient", patient);
 		repoPatient.save(patient);
 
