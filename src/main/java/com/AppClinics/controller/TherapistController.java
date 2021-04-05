@@ -25,10 +25,14 @@ import com.AppClinics.repositories.TurnRepository;
 @RequestMapping(value = "/api/therapist")
 public class TherapistController {
 
-	TherapistRepository repo;
-	PatientRepository repoPatient;
-	TurnRepository repoTurn;
-	AgendaRepository repoAgenda;
+	@Autowired
+	private TherapistRepository repo;
+	@Autowired
+	private PatientRepository repoPatient;
+	@Autowired
+	private TurnRepository repoTurn;
+	@Autowired
+	private AgendaRepository repoAgenda;
 
 	@Autowired
 	public TherapistController(TherapistRepository repo, PatientRepository repoPatient, TurnRepository repoTurn,
@@ -50,7 +54,7 @@ public class TherapistController {
 	}
 
 	@RequestMapping(value = "/newPatient", method = { RequestMethod.POST, RequestMethod.PUT })
-	public String savePatient(@ModelAttribute Patient person, @RequestParam(value = "name") String name,
+	public String savePatient(@ModelAttribute Patient patient, @RequestParam(value = "name") String name,
 			@RequestParam(value = "surname") String surname, @RequestParam(value = "age") Integer age,
 			@RequestParam(value = "phone") Integer phone, @RequestParam(value = "email") String email,
 			@RequestParam(value = "birthdate") String birthdate,
@@ -58,7 +62,6 @@ public class TherapistController {
 
 		Date fecha = new SimpleDateFormat().parse(birthdate);
 
-		Patient patient = new Patient();
 		patient.setName(name);
 		patient.setSurname(surname);
 		patient.setAge(age);

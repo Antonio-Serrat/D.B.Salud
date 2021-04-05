@@ -22,7 +22,7 @@ public class Account implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String name;
+	private String email;
 	private String password;
 
 	@OneToOne
@@ -35,8 +35,8 @@ public class Account implements Serializable {
 
 	}
 
-	public Account(String name, String password) {
-		this.name = name;
+	public Account(String email, String password) {
+		this.email = email;
 		this.password = password;
 	}
 
