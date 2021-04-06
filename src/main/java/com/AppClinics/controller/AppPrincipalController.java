@@ -55,14 +55,13 @@ public class AppPrincipalController {
 		repoAccount.save(account);
 		model.addAttribute("account", account);
 
-		return "index";
+		return "redirect:/";
 	}
 
 	@GetMapping(value = "/about")
 	public String about(Model model) throws ParseException {
-
 		return "about";
-
 	}
 
+	// @RequestMapping(value = "/login" ,method = {RequestMethod.})
 }

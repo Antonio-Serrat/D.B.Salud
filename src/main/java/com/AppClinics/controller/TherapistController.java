@@ -43,7 +43,7 @@ public class TherapistController {
 
 	}
 
-	@RequestMapping(value = "/formularyPatient")
+	@RequestMapping(value = "/formulary")
 	public String formulary(Model model) {
 		Patient patient = new Patient();
 		patient.setBirthdate(new Date());
@@ -68,11 +68,10 @@ public class TherapistController {
 		patient.setBirthdate(fecha);
 		patient.setPhone(phone);
 		patient.getHistory().setObservations(history);
-
 		repoPatient.save(patient);
-		model.addAttribute("patient", repoPatient.findAll());
+		model.addAttribute("patient", patient);
 
-		return "redirect:/patients";
+		return "redirect:/api/therapist/patients";
 	}
 
 	@RequestMapping(value = "/patients", method = RequestMethod.GET)
