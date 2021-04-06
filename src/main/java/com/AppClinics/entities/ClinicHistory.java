@@ -26,13 +26,13 @@ public class ClinicHistory implements Serializable {
 	@OneToOne
 	private Patient patient;
 	private String formulary;
-	private String observations;
+	private String observation;
 
-	public ClinicHistory(Patient patient, String formulary, String obs) {
+	public ClinicHistory(Patient patient, String formulary, String observation) {
 
 		this.formulary = formulary;
 		this.patient = patient;
-		this.observations = obs;
+		this.observation = observation;
 	}
 
 }

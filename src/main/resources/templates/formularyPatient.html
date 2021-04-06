@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>	
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
@@ -13,7 +13,11 @@
 
 	<header th:insert="fragments/headerTh.html :: 'headerTh'"></header>
 	
-	<div class="container" th:insert="fragments/formPatient.html :: formulary" style="margin-top:20px"></div>
+	<div class="container" th:insert="fragments/formPatient.html :: 'formulary'" style="margin-top:20px"></div>
+ 	
+ 	
+ 	
+ 	
  	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

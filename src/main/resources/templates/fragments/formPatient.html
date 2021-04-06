@@ -1,261 +1,261 @@
 <div class ="container" th:fragment="formulary" >
-<form th:action="@{/api/therapist/newPatient}"  method:="post" th:object="${patient}">
-	<div class="form-group row">
-	    <label for="name" class="col-sm-2 col-form-label">Nombre</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="name" name="name" th:field="*{name}" placeholder="Nombre..">
-	    </div>
-	  </div>
-	<div class="form-group row">
-	    <label for="surname" class="col-sm-2 col-form-label">Apellido</label>
-	    <div class="col-sm-10">
-	      <input type="email" class="form-control" id="surname" name="surname" th:field="*{surname}" placeholder="Apellido..">
-	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="direction" class="col-sm-2 col-form-label">Domicilio</label>
-	    <div class="col-sm-10">
-	      <input type="email" class="form-control" id="direction" name="direction" placeholder="Domicilio..">
-	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="location" class="col-sm-2 col-form-label">Localidad</label>
-	    <div class="col-sm-10">
-	      <input type="email" class="form-control" id="location" name="location" placeholder="Localidad..">
-	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="phone" class="col-sm-2 col-form-label">Tlf</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="phone" name ="phone" th:field="*{phone}"placeholder="tlf..">
-	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="email" class="col-sm-2 col-form-label">email</label>
-	    <div class="col-sm-10">
-	      <input type="email" class="form-control" id="email" name="email" th:field="*{email}" placeholder="email..">
-	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="birthdate" class="col-sm-2 col-form-label">Fecha de Nacimiento</label>
-	    <div class="col-sm-10">
-	      <input type="date" class="form-control" id="birthdate" name="birthday" value="${birthdate}" placeholder="dd/mm/yyyy">
-	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="colFormLabel" class="col-sm-2 col-form-label">Lugar de Nacimiento</label>
-	    <div class="col-sm-10">
-	      <input type="email" class="form-control" id="place" name="place" placeholder="Lugar nacimiento ">
-	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="colFormLabel" class="col-sm-2 col-form-label">Est. Civil</label>
-	    <div class="col-sm-10">
-	      <input type="email" class="form-control" id="civilStatus" name="civilStatus" placeholder="Est. Civil..">
-	    </div>
-	 </div>
-	 <div class="form-group col-md-4">
-     	<label for="inputState">Relación fliar.</label>
-      	<select id="inputState" class="form-control">
-        	<option selected>seleccione..</option>
-        	<option>Buena</option>
-        	<option>Mala</option>
-        	<option>Regular</option>
-      </select>
-    </div>
-    <div class="form-group row">
-	    <label for="inputStatic">Pers. convivientes</label>
-	    <div class="col-sm-10">
-	      <input type="email" class="form-control" id="colFormLabel" placeholder="Pers. Convivientes..">
-	    </div>
-	 </div>
-    <div class="form-group col-md-4">
-     	<label for="inputState">¿Tiene hijos?</label>
-      	<select id="inputState" class="form-control">
-        	<option selected>seleccione..</option>
-        	<option>No</option>
-        	<option>1</option>
-        	<option>2</option>
-        	<option>3</option>
-        	<option>4</option>
-        	<option>5</option>
-        	<option>6</option>
-      </select>
-    </div>
-    <div class="form-group row">
-	    <label for="inputState">Edad de los hijos</label>
-	    <div class="col-sm-10">
-	      <input type="email" class="form-control" id="colFormLabel" placeholder="Separe por coma">
-	    </div>
-	 </div>
-    <div class="form-group col-md-4">
-     	<label for="inputState">¿Trabaja actualmente?</label>
-      	<select id="inputState" class="form-control">
-        	<option selected>si/no</option>
-        	<option>si</option>
-        	<option>no</option>
-      </select>
-    </div>
-    <div class="form-group col-md-4">
-     	<label for="inputState">¿Estudia actualmente?</label>
-      	<select id="inputState" class="form-control">
-        	<option selected>si/no</option>
-        	<option>si</option>
-        	<option>no</option>
-      </select>
-    </div>
-    <div class="form-group row">
-	    <label for="inputState">¿Tipo de trabajo realiza?</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="colFormLabel" placeholder="Tipo de trabajo..">
-	    </div>
-	  	<label for="inputState">¿Le gusta el trabajo que realiza?</label>
-	    <select id="inputState" class="form-control">
-        	<option selected>si/no</option>
-        	<option>si</option>
-        	<option>no</option>
-      </select>
-	 </div>
-	 <div class="form-group row">
-	    <label for="inputState">¿Que le gusta hacer en sus ratos libres?</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="colFormLabel" placeholder="Tiempos libres..">
-	    </div>
-	    <label for="inputState">¿Realiza dichas actividades?</label>
-	    <select id="inputState" class="form-control">
-        	<option selected>si/no</option>
-        	<option>si</option>
-        	<option>no</option>
-      </select>
-	 </div>
-	 <div class="form-group row">
-	    <label for="inputState">¿Cual es su color favorito?</label>
-	    <div class="col-sm-10">
-	      <input type="email" class="form-control" id="colFormLabel" placeholder="Color favorito..">
-	    </div>
-	 </div>
-	 <div class="form-group col-md-4">
-     	<label for="inputState">¿Posee habitos adictivos?</label>
-      	<select id="inputState" class="form-control">
-        	<option selected>seleccione..</option>
-        	<option>No</option>
-        	<option>Alcohol</option>
-        	<option>Drogas</option>
-        	<option>Cigarrillo</option>
-        	<option>Dulces</option>
-        	<option>Otros..</option>
-      	</select>
-	    <div class="form-group row">
-		    <label for="inputState"> En caso de responder otros ¿Cuales son?</label>
+	<form th:action="@{/api/therapist/formPatient}"  method="post" th:object="${patient}" action="">
+		<div class="form-group row">
+		    <label for="name" class="col-sm-2 col-form-label">Nombre</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="colFormLabel" placeholder="Otras adicciones...">
+		      <input type="text" class="form-control" id="name" name="name" th:field="*{name}" placeholder="Nombre..">
 		    </div>
-		</div>
-    </div>
-    <div class="form-group row">
-	    <label for="inputState">¿Ha realizado terapias complementarias?</label>
-	    <select id="inputState" class="form-control">
-        	<option selected>si/no</option>
-        	<option>si</option>
-        	<option>no</option>
-      </select>
-	    <label for="inputState">¿Cuales?</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="colFormLabel" placeholder="Terapias complementarias..">
+		  </div>
+		<div class="form-group row">
+		    <label for="surname" class="col-sm-2 col-form-label">Apellido</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="surname" name="surname" th:field="*{surname}" placeholder="Apellido..">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="direction" class="col-sm-2 col-form-label">Domicilio</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="direction" name="direction" placeholder="Domicilio..">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="location" class="col-sm-2 col-form-label">Localidad</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="location" name="location" placeholder="Localidad..">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="phone" class="col-sm-2 col-form-label">Tlf</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="phone" name ="phone" th:field="*{phone}"placeholder="tlf..">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="email" class="col-sm-2 col-form-label">email</label>
+		    <div class="col-sm-10">
+		      <input type="email" class="form-control" id="email" name="email" th:field="*{email}" placeholder="email..">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="birthdate" class="col-sm-2 col-form-label">Fecha de Nacimiento</label>
+		    <div class="col-sm-10">
+		      <input type="date" class="form-control" id="birthdate" name="birthdate" value="${birthdate}" placeholder="yyyy/mm/dd">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="age" class="col-sm-2 col-form-label">Edad</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="age" name="age" th:field="*{age}" placeholder=" Edad... ">
+		 	</div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="colFormLabel" class="col-sm-2 col-form-label">Lugar de Nacimiento</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="place" name="place" placeholder="Lugar nacimiento ">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="colFormLabel" class="col-sm-2 col-form-label">Est. Civil</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="civilStatus" name="civilStatus" placeholder="Est. Civil..">
+		    </div>
+		 </div>
+		 <div class="form-group col-md-4">
+	     	<label for="inputState">Relación fliar.</label>
+	      	<select id="inputState" class="form-control">
+	        	<option selected>seleccione..</option>
+	        	<option>Buena</option>
+	        	<option>Mala</option>
+	        	<option>Regular</option>
+	      </select>
 	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="imputState">¿Ha experimmentado algun tipo de trauma emocional o estrés en su vida?</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="colFormLabel" placeholder="....">
+	    <div class="form-group row">
+		    <label for="inputStatic">Pers. convivientes</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="Pers. Convivientes..">
+		    </div>
+		 </div>
+	    <div class="form-group col-md-4">
+	     	<label for="inputState">¿Tiene hijos?</label>
+	      	<select id="inputState" class="form-control">
+	        	<option selected>seleccione..</option>
+	        	<option>No</option>
+	        	<option>1</option>
+	        	<option>2</option>
+	        	<option>3</option>
+	        	<option>4</option>
+	        	<option>5</option>
+	        	<option>6</option>
+	      </select>
 	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="inputState">¿Ha tenido enfermedades importantes cirujias o accidentes?</label>
-	    <select id="inputState" class="form-control">
-        	<option selected>si/no</option>
-        	<option>si</option>
-        	<option>no</option>
-      </select>
-	    <label for="inputState" >¿Cuando y de que clase?</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="colFormLabel" placeholder="enfermedades..">
+	    <div class="form-group row">
+		    <label for="inputState">Edad de los hijos</label>
+		    <div class="col-sm-10">
+		      <input type="email" class="form-control" id="colFormLabel" placeholder="Separe por coma">
+		    </div>
+		 </div>
+	    <div class="form-group col-md-4">
+	     	<label for="inputState">¿Trabaja actualmente?</label>
+	      	<select id="inputState" class="form-control">
+	        	<option selected>si/no</option>
+	        	<option>si</option>
+	        	<option>no</option>
+	      </select>
 	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="inputState">¿Cual es el motivo principal de la consulta?</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="colFormLabel" placeholder="Motivo de la consulta..">
+	    <div class="form-group col-md-4">
+	     	<label for="inputState">¿Estudia actualmente?</label>
+	      	<select id="inputState" class="form-control">
+	        	<option selected>si/no</option>
+	        	<option>si</option>
+	        	<option>no</option>
+	      </select>
 	    </div>
-	 </div>
-	 <div class="form-group row">
-	 <label for="inputState">¿Esta recibiendo algun tratamiento actualmente o tomando alguna medicación?</label>
-	    <select id="inputState" class="form-control">
-        	<option selected>si/no</option>
-        	<option>si</option>
-        	<option>no</option>
-      	</select>
-      	<label for="inputState">En caso afirmativo exprese aqui</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="colFormLabel" placeholder="tratamientos, medicacion...">
+	    <div class="form-group row">
+		    <label for="inputState">¿Tipo de trabajo realiza?</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="Tipo de trabajo..">
+		    </div>
+		  	<label for="inputState">¿Le gusta el trabajo que realiza?</label>
+		    <select id="inputState" class="form-control">
+	        	<option selected>si/no</option>
+	        	<option>si</option>
+	        	<option>no</option>
+	      </select>
+		 </div>
+		 <div class="form-group row">
+		    <label for="inputState">¿Que le gusta hacer en sus ratos libres?</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="Tiempos libres..">
+		    </div>
+		    <label for="inputState">¿Realiza dichas actividades?</label>
+		    <select id="inputState" class="form-control">
+	        	<option selected>si/no</option>
+	        	<option>si</option>
+	        	<option>no</option>
+	      </select>
+		 </div>
+		 <div class="form-group row">
+		    <label for="inputState">¿Cual es su color favorito?</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="Color favorito..">
+		    </div>
+		 </div>
+		 <div class="form-group col-md-4">
+	     	<label for="inputState">¿Posee habitos adictivos?</label>
+	      	<select id="inputState" class="form-control">
+	        	<option selected>seleccione..</option>
+	        	<option>No</option>
+	        	<option>Alcohol</option>
+	        	<option>Drogas</option>
+	        	<option>Cigarrillo</option>
+	        	<option>Dulces</option>
+	        	<option>Otros..</option>
+	      	</select>
+		    <div class="form-group row">
+			    <label for="inputState"> En caso de responder otros ¿Cuales son?</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="colFormLabel" placeholder="Otras adicciones...">
+			    </div>
+			</div>
 	    </div>
-      </div>
-      <div class="form-group row">
-	    <label for="inputState">¿Puede darme 3 palabras positivas sobre usted?</label>
-	    <div class="col-sm-10">
-	      <input type="email" class="form-control" id="colFormLabel" placeholder="palabla1...">
-	      <input type="email" class="form-control" id="colFormLabel" placeholder="palabla2...">
-	      <input type="email" class="form-control" id="colFormLabel" placeholder="palabla3...">
-	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="inputState">¿Puede darme 3 palabras negativas sobre usted?</label>
-	    <div class="col-sm-10">
-	      <input type="email" class="form-control" id="colFormLabel" placeholder="palabla1...">
-	      <input type="email" class="form-control" id="colFormLabel" placeholder="palabla2...">
-	      <input type="email" class="form-control" id="colFormLabel" placeholder="palabla3...">
-	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="inputState">¿Duerme bien?</label>
-	    <select id="inputState" class="form-control">
-        	<option selected>si/no</option>
-        	<option>si</option>
-        	<option>no</option>
-      	</select>
-     </div>
-     <div class="form-group row">
-	    <label for="inputState">¿Que cosas le producen temor?</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="colFormLabel" placeholder="Temores..">
-	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="inputState">¿Le cuesta tomar decisiones?</label>
-	    <select id="inputState" class="form-control">
-        	<option selected>si/no</option>
-        	<option>si</option>
-        	<option>no</option>
-      	</select>
-     </div>
-     <div class="form-group row">
-	    <label for="inputState">¿Como reacciona ante una situacion inesperada?</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="colFormLabel" placeholder="reaccion ante situaciones inesperadas...">
-	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="inputState">¿Como es su alimentación?</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="colFormLabel" placeholder="Alimentación...">
-	    </div>
-	 </div>
-	 <div class="form-group row">
-	    <label for="observations">Observaciones</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="observations" th:field="*{history.observations}" placeholder="Observaciones...">
-	    </div>
-	 </div>
-	 <button th:action="@{/api/therapist/formulary}"  formmethod="post" type="submit" class="btn btn-primary" style="margin-left:475px">Guardar Paciente</button>
+	    <div class="form-group row">
+		    <label for="inputState">¿Ha realizado terapias complementarias?</label>
+		    <select id="inputState" class="form-control">
+	        	<option selected>si/no</option>
+	        	<option>si</option>
+	        	<option>no</option>
+	     	</select>
+		    <label for="inputState">¿Cuales?</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="Terapias complementarias..">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="imputState">¿Ha experimmentado algun tipo de trauma emocional o estrés en su vida?</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="....">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="inputState">¿Ha tenido enfermedades importantes cirujias o accidentes?</label>
+		    <select id="inputState" class="form-control">
+	        	<option selected>si/no</option>
+	        	<option>si</option>
+	        	<option>no</option>
+	      </select>
+		    <label for="inputState" >¿Cuando y de que clase?</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="enfermedades..">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="inputState">¿Cual es el motivo principal de la consulta?</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="Motivo de la consulta..">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		 	<label for="inputState">¿Esta recibiendo algun tratamiento actualmente o tomando alguna medicación?</label>
+		    <select id="inputState" class="form-control">
+	        	<option selected>si/no</option>
+	        	<option>si</option>
+	        	<option>no</option>
+	      	</select>
+	      	<label for="inputState">En caso afirmativo exprese aqui</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="tratamientos, medicacion...">
+		    </div>
+	      </div>
+	      <div class="form-group row">
+		    <label for="inputState">¿Puede darme 3 palabras positivas sobre usted?</label>
+		    <div class="col-sm-10">
+		      <input type="email" class="form-control" id="colFormLabel" placeholder="palabla1...">
+		      <input type="email" class="form-control" id="colFormLabel" placeholder="palabla2...">
+		      <input type="email" class="form-control" id="colFormLabel" placeholder="palabla3...">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="inputState">¿Puede darme 3 palabras negativas sobre usted?</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="palabla1...">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="palabla2...">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="palabla3...">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="inputState">¿Duerme bien?</label>
+		    <select id="inputState" class="form-control">
+	        	<option selected>si/no</option>
+	        	<option>si</option>
+	        	<option>no</option>
+	      	</select>
+	     </div>
+	     <div class="form-group row">
+		    <label for="inputState">¿Que cosas le producen temor?</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="Temores..">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="inputState">¿Le cuesta tomar decisiones?</label>
+		    <select id="inputState" class="form-control">
+	        	<option selected>si/no</option>
+	        	<option>si</option>
+	        	<option>no</option>
+	      	</select>
+	     </div>
+	     <div class="form-group row">
+		    <label for="inputState">¿Como reacciona ante una situacion inesperada?</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="reaccion ante situaciones inesperadas...">
+		    </div>
+		 </div>
+		 <div class="form-group row">
+		    <label for="inputState">¿Como es su alimentación?</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="colFormLabel" placeholder="Alimentación...">
+		    </div>
+		 </div>
+		 <button th:action="@{/api/therapist/formularyPatient}" formmethod="post" type="submit" class="btn btn-primary" style="margin-left:475px">Guardar Paciente</button>
 	</form>
 </div>

@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.AppClinics.entities.ClinicHistory;
 import com.AppClinics.entities.Patient;
 import com.AppClinics.repositories.AgendaRepository;
+import com.AppClinics.repositories.ClinicHistoryRepository;
 import com.AppClinics.repositories.PatientRepository;
 import com.AppClinics.repositories.TherapistRepository;
 import com.AppClinics.repositories.TurnRepository;
@@ -24,6 +26,7 @@ import com.AppClinics.repositories.TurnRepository;
 @RequestMapping(value = "/api/therapist")
 public class TherapistController {
 
+	private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat();
 	@Autowired
 	private TherapistRepository repo;
 	@Autowired
@@ -34,8 +37,12 @@ public class TherapistController {
 	private AgendaRepository repoAgenda;
 
 	@Autowired
+	private ClinicHistoryRepository repoHistory;
+
+	@Autowired
 	public TherapistController(TherapistRepository repo, PatientRepository repoPatient, TurnRepository repoTurn,
 			AgendaRepository repoAgenda) {
+
 		this.repo = repo;
 		this.repoPatient = repoPatient;
 		this.repoTurn = repoTurn;
@@ -43,8 +50,8 @@ public class TherapistController {
 
 	}
 
-	@RequestMapping(value = "/formulary")
-	public String formulary(Model model) {
+	@RequestMapping(value = "/formularyPatient")
+	public String formularyPatient(Model model) {
 		Patient patient = new Patient();
 		patient.setBirthdate(new Date());
 		model.addAttribute("patient", patient);
@@ -52,14 +59,15 @@ public class TherapistController {
 		return "formularyPatient";
 	}
 
-	@RequestMapping(value = "/newPatient", method = { RequestMethod.POST, RequestMethod.PUT })
+	@RequestMapping(value = "/formPatient", method = { RequestMethod.POST, RequestMethod.PUT })
 	public String savePatient(@ModelAttribute Patient patient, @RequestParam(value = "name") String name,
 			@RequestParam(value = "surname") String surname, @RequestParam(value = "age") Integer age,
 			@RequestParam(value = "phone") Integer phone, @RequestParam(value = "email") String email,
-			@RequestParam(value = "birthdate") String birthdate, @RequestParam(value = "history") String history,
-			Model model) throws ParseException {
+			@RequestParam(value = "birthdate") String birthdate,
+			@RequestParam(value = "observation") String observation, Model model) throws ParseException {
 
-		Date fecha = new SimpleDateFormat().parse(birthdate);
+		Date fecha = SIMPLE_DATE_FORMAT.parse(birthdate);
+		ClinicHistory history = new ClinicHistory();
 
 		patient.setName(name);
 		patient.setSurname(surname);
@@ -67,7 +75,11 @@ public class TherapistController {
 		patient.setEmail(email);
 		patient.setBirthdate(fecha);
 		patient.setPhone(phone);
-		patient.getHistory().setObservations(history);
+		history.setObservation(observation);
+		patient.setHistory(history);
+		history.setPatient(patient);
+
+		repoHistory.save(history);
 		repoPatient.save(patient);
 		model.addAttribute("patient", patient);
 
