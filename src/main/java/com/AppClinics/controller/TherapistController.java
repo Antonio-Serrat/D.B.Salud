@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.AppClinics.entities.ClinicHistory;
 import com.AppClinics.entities.Patient;
 import com.AppClinics.repositories.AgendaRepository;
 import com.AppClinics.repositories.ClinicHistoryRepository;
@@ -62,24 +61,15 @@ public class TherapistController {
 	@RequestMapping(value = "/formPatient", method = { RequestMethod.POST, RequestMethod.PUT })
 	public String savePatient(@ModelAttribute Patient patient, @RequestParam(value = "name") String name,
 			@RequestParam(value = "surname") String surname, @RequestParam(value = "age") Integer age,
-			@RequestParam(value = "phone") Integer phone, @RequestParam(value = "email") String email,
-			@RequestParam(value = "birthdate") String birthdate,
-			@RequestParam(value = "observation") String observation, Model model) throws ParseException {
-
-		Date fecha = SIMPLE_DATE_FORMAT.parse(birthdate);
-		ClinicHistory history = new ClinicHistory();
+			@RequestParam(value = "phone") Integer phone, @RequestParam(value = "email") String email, Model model)
+			throws ParseException {
 
 		patient.setName(name);
 		patient.setSurname(surname);
 		patient.setAge(age);
 		patient.setEmail(email);
-		patient.setBirthdate(fecha);
 		patient.setPhone(phone);
-		history.setObservation(observation);
-		patient.setHistory(history);
-		history.setPatient(patient);
 
-		repoHistory.save(history);
 		repoPatient.save(patient);
 		model.addAttribute("patient", patient);
 
