@@ -31,8 +31,8 @@ public class Therapist implements Serializable {
 	private String surname;
 	private String specialty;
 	private String email;
-	private Long tlf;
-	private Long dni;
+	private String tlf;
+	private String dni;
 
 	@OneToOne
 	@Cascade(CascadeType.ALL)
@@ -52,17 +52,10 @@ public class Therapist implements Serializable {
 
 	}
 
-	public Therapist(List<Patient> patients, List<Turn> turns) {
-		this.patients = new ArrayList<>();
-		this.turns = new ArrayList<>();
-	}
-
-	public Therapist(Account account) {
-
-	}
-
-	public Therapist(String name, String surname, String speciality, String email, Long dni, Long tlf, Agenda agenda) {
+	public Therapist(String name, String surname, String speciality, String email, String dni, String tlf,
+			Agenda agenda) {
 		this.name = name;
+		this.surname = surname;
 		this.specialty = speciality;
 		this.email = email;
 		this.dni = dni;
@@ -70,20 +63,13 @@ public class Therapist implements Serializable {
 		this.agenda = agenda;
 	}
 
-	public List<Patient> getPatients() {
-		return patients;
+	public Therapist(Account account) {
+
 	}
 
-	public void setPatients(Patient patient) {
-		patients.add(patient);
-	}
-
-	public List<Turn> getTurn() {
-		return turns;
-	}
-
-	public void setTurn(Turn turn) {
-		turns.add(turn);
+	public Therapist(List<Patient> patients, List<Turn> turns) {
+		this.patients = new ArrayList<>();
+		this.turns = new ArrayList<>();
 	}
 
 }

@@ -20,10 +20,10 @@
 			<table th:if="!${patients.isEmpty()}" class="table table-hover">
 			  <thead>
 			    <tr>
-			      <th scope="col">#</th>
+			      <th scope="col">Nº Legajo</th>
 			      <th scope="col">Apellido</th>
 			      <th scope="col">Nombre</th>
-			      <th scope="col">direccion</th>
+			      <th scope="col">Telefono</th>
 			      <th scope="col sm-x"></th>
 			      <th scope="col sm-x"></th>
 			    </tr>
@@ -33,8 +33,8 @@
 			      	<th scope="row" th:text="${patient.id}" />
 				    <td th:text="${patient.surname}" />
 	  			    <td th:text="${patient.name}" />
-				    <td th:text="${patient.direction}" />
-				    <td><form th:action="@{|/patients/?id=${patient.id}|}" method="post"><button type="submit" class="btn btn-warning">Editar</button></form></td>
+				    <td th:text="${patient.phone}" />
+				    <td><form th:action="@{|/api/therapist/patients/?id=${patient.id}|}" method="post"><button type="submit" class="btn btn-warning">Editar</button></form></td>
 				    <td><form th:action="@{|/api/therapist/delete/${patient.id}|}" method="post"><button type="submit" class="btn btn-danger">Borrar</button></form></td>
 	   			    
 				</tr>

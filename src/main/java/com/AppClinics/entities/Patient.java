@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
@@ -36,6 +38,7 @@ public class Patient implements Serializable {
 	private Integer age;
 
 	@OneToOne
+	@Cascade(CascadeType.ALL)
 	Therapist therapist;
 
 	@OneToOne

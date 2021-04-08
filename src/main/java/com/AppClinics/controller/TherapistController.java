@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.AppClinics.entities.Patient;
+import com.AppClinics.entities.Therapist;
 import com.AppClinics.repositories.AgendaRepository;
 import com.AppClinics.repositories.ClinicHistoryRepository;
 import com.AppClinics.repositories.PatientRepository;
@@ -51,6 +52,7 @@ public class TherapistController {
 
 	@RequestMapping(value = "/formularyPatient")
 	public String formularyPatient(Model model) {
+
 		Patient patient = new Patient();
 		patient.setBirthdate(new Date());
 		model.addAttribute("patient", patient);
@@ -59,18 +61,21 @@ public class TherapistController {
 	}
 
 	@RequestMapping(value = "/formPatient", method = { RequestMethod.POST, RequestMethod.PUT })
-	public String savePatient(@ModelAttribute Patient patient, @RequestParam(value = "name") String name,
-			@RequestParam(value = "surname") String surname, @RequestParam(value = "age") Integer age,
-			@RequestParam(value = "phone") Integer phone, @RequestParam(value = "email") String email, Model model)
-			throws ParseException {
+	public String savePatient(@ModelAttribute Therapist therapist, @ModelAttribute Patient patient,
+			@RequestParam(value = "name") String name, @RequestParam(value = "surname") String surname,
+			@RequestParam(value = "age") Integer age, @RequestParam(value = "phone") Integer phone,
+			@RequestParam(value = "email") String email, Model model) throws ParseException {
 
-		patient.setName(name);
-		patient.setSurname(surname);
-		patient.setAge(age);
-		patient.setEmail(email);
-		patient.setPhone(phone);
+		Patient p = new Patient();
 
-		repoPatient.save(patient);
+		p.setName(name);
+		p.setSurname(surname);
+		p.setAge(age);
+		p.setEmail(email);
+		p.setPhone(phone);
+
+		repoPatient.save(p);
+
 		model.addAttribute("patient", patient);
 
 		return "redirect:/api/therapist/patients";
@@ -83,7 +88,9 @@ public class TherapistController {
 	}
 
 	@PostMapping(value = "/delete/{id}")
-	public String delete(@PathVariable(value = "id") Long id) {
+	public String delete(@PathVariable(value = "id") Long id, Model model) {
+
+		repoPatient.findById(id);
 
 		repoPatient.deleteById(id);
 

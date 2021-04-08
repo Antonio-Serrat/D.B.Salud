@@ -10,4 +10,5 @@ import com.AppClinics.entities.Patient;
 @Repository
 @Transactional
 public interface PatientRepository extends CrudRepository<Patient, Long> {
+
 }
