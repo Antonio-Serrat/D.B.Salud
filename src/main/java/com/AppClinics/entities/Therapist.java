@@ -27,7 +27,7 @@ public class Therapist implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long id;
+	private Long id;
 
 	private String name;
 	private String surname;
@@ -45,9 +45,11 @@ public class Therapist implements Serializable {
 	private Account account;
 
 	@OneToMany
+	@Cascade(CascadeType.ALL)
 	public List<Turn> turns = new ArrayList<>();
 
 	@OneToMany
+	@Cascade(CascadeType.ALL)
 	public List<Patient> patients = new ArrayList<>();
 
 	public Therapist() {

@@ -40,7 +40,7 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-				<tr th:each="patient, iter : ${patients}">
+				<tr th:each="patient, iter : ${therapist.patients}">
 			      	<th scope="row" th:text="${patient.id}" />
 				    <td th:text="${patient.surname}" />
 	  			    <td th:text="${patient.name}" />
