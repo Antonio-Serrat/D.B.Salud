@@ -7,6 +7,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,7 +58,6 @@ public class TherapistController {
 		this.repoTurn = repoTurn;
 		this.repoAgenda = repoAgenda;
 		this.repoAcc = repoAcc;
-
 	}
 
 	@GetMapping(value = "/homeTh")
@@ -76,18 +78,20 @@ public class TherapistController {
 		Patient patient = new Patient();
 		patient.setBirthdate(new Date());
 
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
 		Long id = therapist.getId();
+		User user = (User) auth.getPrincipal();
+		therapist = repo.findByEmail(user.getUsername());
+//		List<Patient> patients = new ArrayList<>();
+//		therapist.setPatients(patients);
 
-		therapist = repo.findById(id).get();
-		List<Patient> patients = new ArrayList<>();
-		therapist.setPatients(patients);
-
-		therapist.patients.add(patient);
-		repo.save(therapist);
+//		therapist.patients.add(patient);
+//		repo.save(therapist);
 
 		model.addAttribute("therapist", therapist);
 
-		model.addAttribute("patient", patient);
+		model.addAttribute("patient", new Patient());
 
 		return "formularyPatient";
 	}
