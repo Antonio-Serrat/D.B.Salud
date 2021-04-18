@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +25,7 @@ import com.AppClinics.repositories.ClinicHistoryRepository;
 import com.AppClinics.repositories.PatientRepository;
 import com.AppClinics.repositories.TherapistRepository;
 import com.AppClinics.repositories.TurnRepository;
+import com.AppClinics.services.AccountService;
 
 @Controller
 @RequestMapping(value = "/api/therapist")
@@ -42,9 +42,10 @@ public class TherapistController {
 	private AgendaRepository repoAgenda;
 	@Autowired
 	private AccountRepository repoAcc;
-
 	@Autowired
 	private ClinicHistoryRepository repoHistory;
+	@Autowired
+	AccountService userDet;
 
 	@Autowired
 	public TherapistController(TherapistRepository repo, PatientRepository repoPatient, TurnRepository repoTurn,
@@ -76,32 +77,23 @@ public class TherapistController {
 		Patient patient = new Patient();
 		patient.setBirthdate(new Date());
 
-		Long id = therapist.getId();
+		model.addAttribute("patient", patient);
+
+		return "formularyPatient";
+	}
+
+	@RequestMapping(value = "/formPatient/{id}", method = { RequestMethod.POST, RequestMethod.PUT })
+	public String savePatient(@ModelAttribute Therapist therapist, @PathVariable(value = "id") Long id,
+			@ModelAttribute Patient patient, @RequestParam(value = "name") String name,
+			@RequestParam(value = "surname") String surname, @RequestParam(value = "age") Integer age,
+			@RequestParam(value = "phone") Integer phone, @RequestParam(value = "email") String email, Model model)
+			throws ParseException {
 
 		therapist = repo.findById(id).get();
 		List<Patient> patients = new ArrayList<>();
 		therapist.setPatients(patients);
 
 		therapist.patients.add(patient);
-		repo.save(therapist);
-
-		model.addAttribute("therapist", therapist);
-
-		model.addAttribute("patient", patient);
-
-		return "formularyPatient";
-	}
-
-	@RequestMapping(value = "/formPatient", method = { RequestMethod.POST, RequestMethod.PUT })
-	public String savePatient(@ModelAttribute Therapist therapist, @RequestAttribute(value = "id") Long id,
-			@ModelAttribute Patient patient, @RequestParam(value = "name") String name,
-			@RequestParam(value = "surname") String surname, @RequestParam(value = "age") Integer age,
-			@RequestParam(value = "phone") Integer phone, @RequestParam(value = "email") String email, Model model)
-			throws ParseException {
-		therapist = repo.findById(id).get();
-
-		List<Patient> patients = new ArrayList<>();
-		therapist.setPatients(patients);
 
 		patient.setName(name);
 		patient.setSurname(surname);

@@ -1,5 +1,5 @@
 <div class ="container" th:fragment="formulary" >
-	<form th:action="@{/api/therapist/formPatient}"  method="post" th:object="${patient}" action="">
+	<form  th:action="@{|/api/therapist/formPatient/${therapist.id}|}"  method="post" th:object="${patient}" action="">
 		<div class="form-group row">
 		    <label for="name" class="col-sm-2 col-form-label">Nombre</label>
 		    <div class="col-sm-10">
@@ -256,6 +256,6 @@
 		      <input type="text" class="form-control" id="colFormLabel" placeholder="Alimentación...">
 		    </div>
 		 </div>
-		 <button th:object="${account}" th:action="@{|/api/therapist/formularyPatient/${account.therapist.id}|}" formethod="post" type="submit" class="btn btn-primary" style="margin-left:475px">Guardar Paciente</button>
+		 <button th:action="@{/api/therapist/formularyPatient}" formethod="post" type="submit" class="btn btn-primary" style="margin-left:475px">Guardar Paciente</button>
 	</form>
 </div>

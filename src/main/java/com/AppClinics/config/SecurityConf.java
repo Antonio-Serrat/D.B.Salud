@@ -24,7 +24,7 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
 		http.formLogin().usernameParameter("email").passwordParameter("password")
-				.defaultSuccessUrl("/api/therapist/homeTh").permitAll();
+				.defaultSuccessUrl("/api/therapist/homeTh/${account.therapist.id}").permitAll();
 		http.authorizeRequests().antMatchers("/", "/index", "/about", "/signup", "/signUp", "/login").permitAll().and()
 				.authorizeRequests().antMatchers("/api/***").hasAnyRole("USER").anyRequest().authenticated().and()
 				.logout().logoutSuccessUrl("/");
