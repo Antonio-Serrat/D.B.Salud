@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Cascade;
@@ -37,7 +38,7 @@ public class Patient implements Serializable {
 
 	private Integer age;
 
-	@OneToOne
+	@ManyToOne
 	@Cascade(CascadeType.ALL)
 	Therapist therapist;
 

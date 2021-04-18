@@ -2,6 +2,7 @@ package com.AppClinics.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.ParseException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,27 +12,33 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.AppClinics.entities.Account;
+import com.AppClinics.entities.Roles;
 import com.AppClinics.entities.Therapist;
 import com.AppClinics.repositories.AccountRepository;
 import com.AppClinics.repositories.AgendaRepository;
-import com.AppClinics.repositories.PatientRepository;
+import com.AppClinics.repositories.RolesRepository;
 import com.AppClinics.repositories.TherapistRepository;
-import com.AppClinics.repositories.TurnRepository;
+import com.AppClinics.services.AccountService;
+
+import lombok.AllArgsConstructor;
 
 @Controller
+@AllArgsConstructor
 @RequestMapping(value = "/")
 public class AppPrincipalController {
 
+	private final AccountService userService;
+
+	@Autowired
+	PasswordEncoder bcrypt;
 	@Autowired
 	private TherapistRepository repoTherapist;
-	@Autowired
-	private PatientRepository repoPatient;
-	@Autowired
-	private TurnRepository repoTurn;
 	@Autowired
 	private AgendaRepository repoAgenda;
 	@Autowired
 	private AccountRepository repoAccount;
+	@Autowired
+	private RolesRepository repoRol;
 
 	@GetMapping(value = "/")
 	public String Welcome() {
@@ -39,8 +46,9 @@ public class AppPrincipalController {
 	}
 
 	@GetMapping(value = "/signup")
-	public String signup(Model model) {
-		Account account = new Account();
+	public String signup(Account account, Model model) {
+
+		account = new Account();
 		model.addAttribute("account", account);
 
 		Therapist therapist = new Therapist();
@@ -58,42 +66,42 @@ public class AppPrincipalController {
 			@RequestParam(value = "surname", required = true) String surname,
 			@RequestParam(value = "specialty", required = true) String specialty,
 			@RequestParam(value = "dni", required = true) String dni,
-			@RequestParam(value = "tlf", required = true) String tlf, Model model) {
+			@RequestParam(value = "phone", required = true) String phone, Model model) {
 
-		Account ac = new Account();
-		Therapist th = new Therapist();
-		ac.setEmail(email);
-		ac.setPassword(password);
-		ac.setTherapist(th);
-		repoAccount.save(ac);
-		model.addAttribute("account", account);
+		String pass = bcrypt.encode(account.getPassword());
 
-		th.setAccount(ac);
-		th.setName(name);
-		th.setSurname(surname);
-		th.setSpecialty(specialty);
-		th.setDni(dni);
-		th.setTlf(tlf);
-		th.setEmail(email);
-		repoTherapist.save(th);
+		Roles rol = new Roles();
+		rol.setAccount(account);
+		rol.setRol("USER");
+		account.setRoles(rol);
+		repoRol.save(rol);
+
+		account.setEmail(email);
+		account.setPassword(pass);
+
+		therapist.setAccount(account);
+		therapist.setName(name);
+		therapist.setSurname(surname);
+		therapist.setSpecialty(specialty);
+		therapist.setDni(dni);
+		therapist.setPhone(phone);
+		therapist.setEmail(email);
+		therapist.getPatients();
+
+		repoTherapist.save(therapist);
+		account.setTherapist(therapist);
+		repoAccount.save(account);
+
+		model.addAttribute("rol", rol);
 		model.addAttribute("therapist", therapist);
-
+		model.addAttribute("account", account);
 		return "redirect:/";
 	}
 
-	@GetMapping(value = "/login")
-	public String login(@ModelAttribute Account account, @ModelAttribute Therapist therapist,
-			@RequestParam(value = "email", required = true) String email,
-			@RequestParam(value = "password", required = true) String password, Model model) {
+	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
+	public String login() {
 
-		repoAccount.findAll();
-
-		if (account.getEmail() == email & account.getPassword() == password) {
-
-			return "homeTh";
-		}
-
-		return "redirect=/";
+		return "/login";
 	}
 
 	@GetMapping(value = "/about")

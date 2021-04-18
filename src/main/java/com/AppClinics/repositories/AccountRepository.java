@@ -1,6 +1,6 @@
 package com.AppClinics.repositories;
 
-import javax.transaction.Transactional;
+import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 import com.AppClinics.entities.Account;
 
 @Repository
-@Transactional
+
 public interface AccountRepository extends CrudRepository<Account, Long> {
 
+	public Optional<Account> findByEmail(String email);
+//	Account findByEmail(String email);
 }

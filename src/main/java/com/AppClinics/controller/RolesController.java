@@ -13,42 +13,42 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.AppClinics.entities.Admin;
-import com.AppClinics.repositories.AdminRepository;
+import com.AppClinics.entities.Roles;
+import com.AppClinics.repositories.RolesRepository;
 
 @RestController
 @RequestMapping(value = "/api/admin")
-public class AdminController {
+public class RolesController {
 
-	AdminRepository repo;
+	RolesRepository repo;
 
 	@Autowired
-	public AdminController(AdminRepository repo) {
+	public RolesController(RolesRepository repo) {
 		this.repo = repo;
 	}
 
 	@GetMapping(value = "/")
-	public ResponseEntity<List<Admin>> getAdmins() {
-		return new ResponseEntity<List<Admin>>((List<Admin>) repo.findAll(), HttpStatus.OK);
+	public ResponseEntity<List<Roles>> getAdmins() {
+		return new ResponseEntity<List<Roles>>((List<Roles>) repo.findAll(), HttpStatus.OK);
 	}
 
 	@PostMapping(value = "/add")
-	public ResponseEntity<Admin> saveAdmin(@PathParam(value = "name") String name) {
+	public ResponseEntity<Roles> saveAdmin(@PathParam(value = "name") String role) {
 
-		Admin root = new Admin();
-		root.setName(name);
+		Roles rol = new Roles();
+		rol.setRol(role);
 
-		repo.save(root);
+		repo.save(rol);
 
-		return new ResponseEntity<Admin>(root, HttpStatus.CREATED);
+		return new ResponseEntity<Roles>(rol, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping(value = "/dellOFFall")
-	public ResponseEntity<List<Admin>> deleteAll(@PathParam(value = "id") Long id) {
+	public ResponseEntity<List<Roles>> deleteAll(@PathParam(value = "id") Long id) {
 
 		repo.deleteAll();
 
-		return new ResponseEntity<List<Admin>>(HttpStatus.OK);
+		return new ResponseEntity<List<Roles>>(HttpStatus.OK);
 	}
 	/*
 	 * @DeleteMapping(value = "/{id}") public ResponseEntity<Admin>

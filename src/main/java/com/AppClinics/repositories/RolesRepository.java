@@ -5,11 +5,10 @@ import javax.transaction.Transactional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.AppClinics.entities.Admin;
+import com.AppClinics.entities.Roles;
 
 @Repository
 @Transactional
-public interface AdminRepository extends CrudRepository<Admin, Long> {
+public interface RolesRepository extends CrudRepository<Roles, Long> {
 
-	// public findById(Long id);
 }

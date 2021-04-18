@@ -11,4 +11,9 @@ import com.AppClinics.entities.Patient;
 @Transactional
 public interface PatientRepository extends CrudRepository<Patient, Long> {
 
+//	public default Patient findByTherapistId(Long id) {
+//		Therapist therapist;
+//		therapist.getId();	
+//		
+//	}
 }

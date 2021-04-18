@@ -15,23 +15,25 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "Therapists")
+@AllArgsConstructor
 
 public class Therapist implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	public Long id;
 
 	private String name;
 	private String surname;
 	private String specialty;
 	private String email;
-	private String tlf;
+	private String phone;
 	private String dni;
 
 	@OneToOne
@@ -43,33 +45,28 @@ public class Therapist implements Serializable {
 	private Account account;
 
 	@OneToMany
-	public List<Turn> turns;
+	public List<Turn> turns = new ArrayList<>();
 
 	@OneToMany
-	public List<Patient> patients;
+	public List<Patient> patients = new ArrayList<>();
 
 	public Therapist() {
 
 	}
 
-	public Therapist(String name, String surname, String speciality, String email, String dni, String tlf,
+	public Therapist(String name, String surname, String speciality, String email, String dni, String phone,
 			Agenda agenda) {
 		this.name = name;
 		this.surname = surname;
 		this.specialty = speciality;
 		this.email = email;
 		this.dni = dni;
-		this.tlf = tlf;
+		this.phone = phone;
 		this.agenda = agenda;
 	}
 
 	public Therapist(Account account) {
 
-	}
-
-	public Therapist(List<Patient> patients, List<Turn> turns) {
-		this.patients = new ArrayList<>();
-		this.turns = new ArrayList<>();
 	}
 
 }

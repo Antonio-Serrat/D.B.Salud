@@ -12,12 +12,13 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "Accounts")
-
+@AllArgsConstructor
 public class Account implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -33,7 +34,15 @@ public class Account implements Serializable {
 	private Therapist therapist;
 
 	@OneToOne
-	private Admin admin;
+	@Cascade(CascadeType.ALL)
+	private Roles roles;
+
+	// private String roless;
+
+	@Override
+	public String toString() {
+		return "Account [id=" + id + ", username=" + email + ", password=" + password + "]";
+	}
 
 	public Account() {
 
@@ -44,9 +53,11 @@ public class Account implements Serializable {
 		this.password = password;
 	}
 
-	public Account(String email, String password, Therapist therapist) {
+	public Account(String email, String password, Therapist therapist, Roles roles) {
 		this(email, password);
 		this.therapist = therapist;
+		this.roles = roles;
+
 	}
 
 }

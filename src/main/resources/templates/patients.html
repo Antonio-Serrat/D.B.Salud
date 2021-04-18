@@ -9,15 +9,26 @@
 	<title>Your's Patients</title>
 </head>
 <body>
-	<header th:insert="fragments/headerTh.html :: 'headerTh'"></header>
+	<header th:insert="fragments/headerTh.html :: 'headerTh'" ></header>
+
+	<script type="text/javascript">
+		function ConfirmDelete(){
+			var response = confirm("¿Esta seguro que quiere eliminar su paciente?");
+			if(response == true){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	</script>
 	
 	<div class="container">
 		<h3>Patients</h3>
-		<div th:if="${patients.isEmpty()}" class="alert alert-primary" role="alert">
+		<div th:if="*{therapist.patients.isEmpty()}" class="alert alert-primary" role="alert">
 		  No hay pacientes agregados.
 		</div>
 		<span >
-			<table th:if="!${patients.isEmpty()}" class="table table-hover">
+			<table th:if="!*{therapist.patients.isEmpty()}"  class="table table-hover">
 			  <thead>
 			    <tr>
 			      <th scope="col">Nº Legajo</th>
@@ -34,8 +45,8 @@
 				    <td th:text="${patient.surname}" />
 	  			    <td th:text="${patient.name}" />
 				    <td th:text="${patient.phone}" />
-				    <td><form th:action="@{|/api/therapist/patients/?id=${patient.id}|}" method="post"><button type="submit" class="btn btn-warning">Editar</button></form></td>
-				    <td><form th:action="@{|/api/therapist/delete/${patient.id}|}" method="post"><button type="submit" class="btn btn-danger">Borrar</button></form></td>
+				    <td><form th:action="@{|/api/therapist/patients/${patient.id}|}" method="post"><button type="submit" class="btn btn-warning">Editar</button></form></td>
+				    <td><form th:action="@{|/api/therapist/delete/${patient.id}|}" method="post"><button type="submit" class="btn btn-danger" onclick="return ConfirmDelete()">Borrar</button></form></td>
 	   			    
 				</tr>
 			  </tbody>

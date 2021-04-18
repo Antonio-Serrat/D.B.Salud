@@ -256,6 +256,6 @@
 		      <input type="text" class="form-control" id="colFormLabel" placeholder="Alimentación...">
 		    </div>
 		 </div>
-		 <button th:action="@{/api/therapist/formularyPatient}" formmethod="post" type="submit" class="btn btn-primary" style="margin-left:475px">Guardar Paciente</button>
+		 <button th:object="${account}" th:action="@{|/api/therapist/formularyPatient/${account.therapist.id}|}" formethod="post" type="submit" class="btn btn-primary" style="margin-left:475px">Guardar Paciente</button>
 	</form>
 </div>

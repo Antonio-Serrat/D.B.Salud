@@ -1,7 +1,7 @@
 package com.AppClinics.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.AppClinics.repositories.AccountRepository;
@@ -10,22 +10,11 @@ import com.AppClinics.repositories.AccountRepository;
 @RequestMapping(value = "/api/accounts")
 public class AccountController {
 
+	@Autowired
 	AccountRepository repo;
 
 	public AccountController(AccountRepository repo) {
 		this.repo = repo;
-	}
-
-	@GetMapping(value = "/homeTh")
-	public String home() {
-
-		return "homeTh";
-	}
-
-	@GetMapping(value = "/therapist")
-	public String me() {
-
-		return "me";
 	}
 
 }
